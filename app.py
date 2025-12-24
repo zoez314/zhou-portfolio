@@ -187,8 +187,6 @@ using a treatment vs control comparison and a light DID estimator.
     st.write("- Live app: (https://public-safety-housing-impact-and3pu5nenedqo58zuapoa.streamlit.app/)")
     st.write("- GitHub repo: (https://github.com/zoez314/public-safety-housing-impact)")
 
-    st.info("Tip: Put the live app + repo links here so recruiters can click instantly.")
-
 
 def coming_soon():
     st.title("🚧 Project #3 — Coming Soon")
