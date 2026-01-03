@@ -24,10 +24,10 @@ def render_project_card(
         p = img_path(img_file)
 
         if p.exists():
-            st.image(str(p), use_column_width=True)
+            st.image(str(p), width="stretch")
         else:
             st.markdown(
-                f"""
+                """
                 <div style="
                     height:160px; border-radius:14px;
                     background: linear-gradient(135deg, rgba(56,189,248,0.35), rgba(167,139,250,0.25));
@@ -130,7 +130,7 @@ I build applied, end-to-end projects that turn data into useful products and das
             target_page="📊 Customer Value & Churn Risk",
         )
 
-    # Optional: a second row for “coming soon”
+    # Optional: second row
     st.markdown("")
     colA, colB, colC = st.columns(3, gap="large")
     with colA:
@@ -230,7 +230,7 @@ def customer_value_churn_risk():
 
     hero = img_path("Customer_Risk.jpg")
     if hero.exists():
-        st.image(str(hero), use_column_width=True)
+        st.image(str(hero), width="stretch")
 
     st.write(
         """
@@ -259,7 +259,6 @@ This app predicts customer churn risk and turns the prediction into a **decision
     )
 
     st.markdown("### 🔗 GitHub")
-    
     st.link_button(
         "Open GitHub Repo",
         "https://github.com/zoez314/customer-value-and-churn-risk-intelligence/tree/main",
@@ -267,7 +266,10 @@ This app predicts customer churn risk and turns the prediction into a **decision
     )
 
     st.markdown("---")
-    st.info("Tip: If you update the model pipeline, re-save the `joblib` and keep sklearn versions aligned between training and deployment.")
+    st.info(
+        "Note: The deployed environment may use newer sklearn versions. "
+        "If you update the model pipeline, re-save the `joblib` and keep versions aligned."
+    )
 
 
 def coming_soon():
@@ -290,6 +292,24 @@ def contact():
     st.write("**LinkedIn:** https://www.linkedin.com/in/zoe-zhou-a327bb319/")
     st.write("**GitHub:** https://github.com/zoez314")
     st.write("**Work Authorization:** U.S. Permanent Resident (Green Card)")
+
+    st.markdown("---")
+    st.subheader("📄 Resume")
+
+    resume_path = img_path("Zhou_Zhou_Resume.pdf")
+    if resume_path.exists():
+        with open(resume_path, "rb") as f:
+            st.download_button(
+                label="Download Resume (PDF)",
+                data=f,
+                file_name="Zhou_Zhou_Resume.pdf",
+                mime="application/pdf",
+                width="stretch",
+            )
+    else:
+        st.warning(
+            "Resume file not found. Put `Zhou_Zhou_Resume.pdf` into the `assets/` folder, then redeploy."
+        )
 
 
 # ----------------- Router -----------------
